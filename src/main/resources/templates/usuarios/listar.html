@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de Usuário - Listagem</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+		<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+		
+		<div class="container">
+			<h3>Listagem de Usuários</h3>
+			<a href="/usuarios/inserir"  class="btn btn-success">Inserir Usuário</a>
+			<div th:each="usuario: ${usuario}" style="margin: 10px">
+				<div class="card bg-light mb-3">
+					<div class="card-body">
+						<p class="card-text" th:text="${usuario.nome}"></p>
+						<p class="card-text" th:text="${usuario.email}"></p>
+						<p class="card-text" th:text="${usuario.telefone}"></p>
+					</div>
+					<div class="card-footer bg-light">
+						<p>
+							<a th:href="@{/usuarios/alterar/{id}(id=${usuario.id})}">Alterar</a>|
+							<a th:href="@{/usuarios/excluir/{id}(id=${usuario.id})}">Excluir</a>|
+						</p>
+					</div> 
+				</div>
+			</div>
+		</div>
+		<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

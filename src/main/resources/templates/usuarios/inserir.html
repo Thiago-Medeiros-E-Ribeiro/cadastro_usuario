@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de Usuário - Incluir Usuário</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+	<div class="container">
+		<h3>Inserção de Usuário</h3>
+		<form class="form-horizontal" action="/usuarios/inserir" method="post" th:object="${usuario}">
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label> Nome: </label> 
+					<input type="text" class="form-control" th:field="*{nome}">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nome')}">
+						<label th:errors="*{nome}" class="validation-message"></label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label> Email: </label> 
+					<input type="text"  class="form-control" th:field="*{email}">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}">
+						<label th:errors="*{email}" class="validation-message"></label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label> Senha: </label> 
+					<input type="password"  class="form-control" th:field="*{senha}">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('senha')}">
+						<label th:errors="*{senha}" class="validation-message"></label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label> Telefone: </label> 
+					<input type="text" class="form-control" th:field="*{telefone}">
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Inserir</button>
+		</form>
+	</div>
+	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
